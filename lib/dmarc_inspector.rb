@@ -1,5 +1,7 @@
 require "dmarc_inspector/version"
 
-module DmarcInspector
-  # Your code goes here...
+class DMARCInspector
+  def receiver_policy
+    :none
+  end
 end
