@@ -16,5 +16,7 @@ class DMARCInspector
 
     record = DMARC::Parser.parse(dns_resource_data)
     record[:p]
+  rescue
+    :none
   end
 end
