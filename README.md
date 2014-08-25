@@ -1,6 +1,6 @@
 # DmarcInspector
 
-TODO: Write a gem description
+Looks up DMARC policy of a host
 
 ## Installation
 
