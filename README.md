@@ -1,6 +1,6 @@
-# DmarcInspector
+# dmarc_inspector
 
-Looks up DMARC policy of a host
+Looks up DMARC policy of a domain
 
 ## Installation
 
