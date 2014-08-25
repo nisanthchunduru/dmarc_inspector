@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'hashie'
+gem 'parslet'
 
 # Specify your gem's dependencies in dmarc_inspector.gemspec
 gemspec

@@ -7,7 +7,7 @@ describe DMARCInspector do
       expect(dmarc_inspector.receiver_policy).to eq(:none)
     end
 
-    context "policy is 'reject'" do
+    context "receiver policy is 'reject'" do
       it 'returns :reject' do
         # TODO: Mock DNS query
         # "v=DMARC1\; p=reject\; sp=none\; pct=100\; rua=mailto:dmarc-yahoo-rua@yahoo-inc.com, mailto:dmarc_y_rua@yahoo.com\;"

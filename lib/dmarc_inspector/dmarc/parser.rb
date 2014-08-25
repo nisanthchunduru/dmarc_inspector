@@ -1,29 +1,49 @@
-require 'dmarc_inspector/dmarc/record'
+require 'parslet'
 
 class DMARCInspector
   module DMARC
-    class Parser
+    # Borrowed from 'dmarc' gem
+    class Parser < Parslet::Parser
       def self.parse(raw)
-        new(raw).parse
+        new.parse(raw)
       end
 
-      def initialize(raw)
-        @raw = raw
+      def tag_value_pair(tag_definition, value_definition)
+        tag_definition >>
+        wsp? >> str('=') >> wsp? >>
+        value_definition
       end
 
-      # Naive parser
-      # Borrowed from https://pypi.python.org/pypi/gs.dmarc/2.1.1 
-      def parse
-        record = @raw.strip.split(';')
-        record = record.map { |pair| pair.strip.split('=') }
-        record = record.map { |(tag, value)| [tag.strip, value.strip] }
-        # TODO: Symbols aren't garbage collected, don't dynamically create
-        # symbols from unknown strings
-        record = Record[record]
-        record[:p] = record[:p].to_sym if ['none', 'reject', 'quarantine'].include?(record[:p]) 
-
-        record
+      root(:dmarc_record)
+      rule(:dmarc_record) do
+        dmarc_version >>
+        dmarc_sep >> dmarc_request >>
+        # Not bothering about other tags, just need policy tag for now
+        any.repeat
       end
+
+      rule(:dmarc_version) do
+        tag_value_pair(
+          str('v'),
+          str('DMARC1').as(:v)
+        )
+      end
+
+      rule(:dmarc_sep) { wsp? >> str(';') >> wsp? }
+
+      rule(:dmarc_request) do
+        tag_value_pair(
+          str('p'),
+          (
+            str('none') |
+            str('quarantine') |
+            str('reject')
+          ).as(:p)
+        ) 
+      end
+
+      rule(:wsp) { str(' ') | str("\t") }
+      rule(:wsp?) { wsp.repeat }
     end
   end
 end
