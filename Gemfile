@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'hashie'
+
 # Specify your gem's dependencies in dmarc_inspector.gemspec
 gemspec
 
