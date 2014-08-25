@@ -1,3 +1,3 @@
-module DmarcInspector
-  VERSION = "0.0.1"
+class DMARCInspector
+  VERSION = '0.1.0'
 end

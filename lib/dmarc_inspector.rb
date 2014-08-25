@@ -1,4 +1,3 @@
-require "dmarc_inspector/version"
 require 'resolv'
 require 'dmarc_inspector/dmarc/record'
 

@@ -5,7 +5,7 @@ require 'dmarc_inspector/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "dmarc_inspector"
-  spec.version       = DmarcInspector::VERSION
+  spec.version       = DMARCInspector::VERSION
   spec.authors       = ["Nisanth Chunduru"]
   spec.email         = ["nisanth074@gmail.com"]
   spec.summary       = "Looks up DMARC policy of a domain"
