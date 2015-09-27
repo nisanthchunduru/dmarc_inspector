@@ -20,12 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To look up dmarc policy of a domain
 
-## Contributing
+```ruby
+dmarc_inspector = DMARCInspector.new('yahoo.com')
+dmarc_inspector.receiver_policy
+# => :reject
+```
 
-1. Fork it ( https://github.com/[my-github-username]/dmarc_inspector/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+To find more usage examples, see specs
+https://github.com/nisanth074/dmarc_inspector/blob/master/spec/dmarc_inspector_spec.rb
