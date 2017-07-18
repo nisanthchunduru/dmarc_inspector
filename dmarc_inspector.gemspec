@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = DMARCInspector::VERSION
   spec.authors       = ["Nisanth Chunduru"]
   spec.email         = ["nisanth074@gmail.com"]
-  spec.summary       = "Looks up DMARC policy of a domain"
+  spec.summary       = "Look up the DMARC policy of any email service provider"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
